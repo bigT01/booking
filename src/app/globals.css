@@ -4,3 +4,14 @@
 body {
   background: #161621;
 }
+
+.active-drop{
+  transform: rotate(180deg);
+  transition: transform 0.35s linear;
+}
+
+
+.nonactive-drop{
+  transform: rotate(0deg);
+  transition: transform 0.35s linear;
+}

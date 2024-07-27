@@ -8,8 +8,10 @@ import {FiUser} from "react-icons/fi";
 import {usePathname} from "next/navigation";
 
 const AppBar = () => {
+    const routes = ['/', '/soon', '/food', '/profile']
     const pathname = usePathname()
-    return (
+
+    return routes.includes(pathname) ? (
         <div className='w-full py-4 bg-[#161621] fixed bottom-0 px-8'>
             <ul className={'w-full text-[#4A4B56] flex justify-between'}>
                 <li className=''>
@@ -38,7 +40,7 @@ const AppBar = () => {
                 </li>
             </ul>
         </div>
-    );
+    ) : null;
 };
 
 export default AppBar;
