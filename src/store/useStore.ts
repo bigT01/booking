@@ -10,8 +10,23 @@ export interface IMovie {
     mainCategory: string
 }
 
+interface Seat {
+    id: string,
+    status: "Selected" | 'Available' | "Reserved"
+}
+
+interface IBooking {
+    id: string,
+    movieId: string,
+    date: string[],
+    time: string[],
+    quality: string[],
+    seats: Seat[]
+}
+
 interface IState {
-    movies: IMovie[]
+    movies: IMovie[],
+    booking: IBooking[]
 }
 
 export const useStore = create<IState>()((set) => ({
@@ -33,6 +48,57 @@ export const useStore = create<IState>()((set) => ({
             name: 'Glass',
             mainCategory: 'Premieres',
             starColor: '#F18F01'
+        }
+    ],
+    booking: [
+        {
+            id: '2',
+            movieId: '1',
+            date: ['1.05.2024', '2.05.2024', '3.05.2024', '4.05.2024', '5.05.2024'],
+            time: ['8:45 PM', '11:30 PM', '01:00 AM'],
+            quality: ['2D', "3D"],
+            seats: [
+                {
+                    id: '1',
+                    status: "Available"
+                },
+                {
+                    id: '2',
+                    status: "Available"
+                },
+                {
+                    id: '3',
+                    status: "Available"
+                },
+                {
+                    id: '4',
+                    status: "Available"
+                },
+                {
+                    id: '5',
+                    status: "Available"
+                },
+                {
+                    id: '6',
+                    status: "Available"
+                },
+                {
+                    id: '7',
+                    status: "Available"
+                },
+                {
+                    id: '8',
+                    status: "Available"
+                },
+                {
+                    id: '9',
+                    status: "Available"
+                },
+                {
+                    id: '10',
+                    status: "Available"
+                },
+            ]
         }
     ]
 }))

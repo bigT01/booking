@@ -7,6 +7,7 @@ import {IMovie, useStore} from "@/store/useStore";
 const Page = () => {
     const [data, setData] = useState<null | IMovie>(null)
     const movie = useStore(state => state.movies)
+    const booking = useStore(state => state.booking)
     const router = useRouter()
     const pathname = usePathname()
 
@@ -16,6 +17,13 @@ const Page = () => {
             setData(goodData)
         }
     }, [movie, pathname])
+
+    const BookingHandler = () => {
+        const bookingData = booking.filter(book => book.movieId === pathname.split('/')[2])[0]
+        if(bookingData){
+            router.push(`/booking/${bookingData.id}`)
+        }
+    }
     return (
         <div className='w-full'>
             <div className='w-full h-[360px] relative mb-4'>
@@ -63,6 +71,7 @@ const Page = () => {
             </div>
             <p className='mx-8 text-white text-base text-center'>{data?.bio}</p>
             <button
+                onClick={() => BookingHandler()}
                 className='px-[23px] z-50 py-[12px] bg-[#F74346] absolute gap-2 text-white flex items-center bottom-10 rounded-[13px]'
                 style={{left: '50%', transform: 'translateX(-50%)'}}>
                 <span className={'font-extrabold w-[225px] text-xl'}>Booking</span>
