@@ -1,5 +1,5 @@
 "use client";
-import React, {ReactNode} from 'react';
+import React, {ButtonHTMLAttributes, ReactNode} from 'react';
 
 type ButtonProps = {
     type: 'Primary' | 'Secondary' | 'Tertiary',
@@ -7,9 +7,9 @@ type ButtonProps = {
     size: 'lg' | 'md' | 'sm' | 'xs',
     state?: 'default' | 'inactive' | 'destructive',
     children: ReactNode
-}
+} & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({type, size, icon, state='default', children}:ButtonProps) => {
+const Button = ({type, size, icon, state = 'default', children, ...rest}: ButtonProps) => {
     // Hash table for button sizes
     const sizeStyles: { [key: string]: string } = {
         lg: "py-3 px-5 text-lg",
@@ -18,7 +18,7 @@ const Button = ({type, size, icon, state='default', children}:ButtonProps) => {
         xs: "py-[10px] px-4 text-base"
     };
 
-    // Хеш-таблица для стилей с вложенными состояниями
+    // Hash table for styles with nested states
     const typeStyles: {
         [key: string]: {
             [key: string]: string
@@ -42,7 +42,9 @@ const Button = ({type, size, icon, state='default', children}:ButtonProps) => {
     };
 
     return (
-        <button className={`rounded-md flex items-center gap-1 ${sizeStyles[size]} ${typeStyles[type][state]} transition-colors`}>
+        <button
+            className={`rounded-md flex items-center gap-1 ${sizeStyles[size]} ${typeStyles[type][state]} transition-colors`}
+            {...rest}>
             <span>
                 {children}
             </span>
