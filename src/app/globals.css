@@ -6,3 +6,26 @@ body {
   font-family: NunitoSans, sans-serif;
 }
 
+.btn-primary-default svg path{
+  stroke: #FAFAFA;
+}
+
+.btn-primary-inactive svg path{
+  stroke: #7C8DB0;
+}
+
+.btn-secondary-destructive svg path{
+  stroke: #EB5757;
+}
+
+.btn-secondary-default svg path{
+  stroke: #605DEC;
+}
+
+.btn-tertiary-default svg path{
+  stroke: #605DEC;
+}
+
+.btn-tertiary-default:hover svg path{
+  stroke: #1513A0;
+}
