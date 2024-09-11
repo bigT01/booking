@@ -2,14 +2,14 @@
 import React, {ButtonHTMLAttributes, ReactNode} from 'react';
 
 type ButtonProps = {
-    type: 'Primary' | 'Secondary' | 'Tertiary',
+    btnType: 'Primary' | 'Secondary' | 'Tertiary',
     icon?: ReactNode,
     size: 'lg' | 'md' | 'sm' | 'xs',
     state?: 'default' | 'inactive' | 'destructive',
     children: ReactNode
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button = ({type, size, icon, state = 'default', children, ...rest}: ButtonProps) => {
+const Button = ({btnType, size, icon, state = 'default', children, ...rest}: ButtonProps) => {
     // Hash table for button sizes
     const sizeStyles: { [key: string]: string } = {
         lg: "py-3 px-5 text-lg",
@@ -43,7 +43,7 @@ const Button = ({type, size, icon, state = 'default', children, ...rest}: Button
 
     return (
         <button
-            className={`rounded-md flex items-center gap-1 ${sizeStyles[size]} ${typeStyles[type][state]} transition-colors`}
+            className={`rounded-md flex items-center gap-1 ${sizeStyles[size]} ${typeStyles[btnType][state]} transition-colors`}
             {...rest}>
             <span>
                 {children}

@@ -29,3 +29,7 @@ body {
 .btn-tertiary-default:hover svg path{
   stroke: #1513A0;
 }
+
+.image-transition {
+  transition: opacity 0.3s ease-in-out;
+}
