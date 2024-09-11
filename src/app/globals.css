@@ -33,3 +33,14 @@ body {
 .image-transition {
   transition: opacity 0.3s ease-in-out;
 }
+
+.gradient-text {
+  width: 50%;
+  font-size: 96px;
+  line-height: 90px;
+  font-weight: 800;
+  background: linear-gradient(to right, #5194FD,
+  #6C53FD, #7F62FD, #777EFD);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}

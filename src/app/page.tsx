@@ -49,7 +49,11 @@ export default function Home() {
                     </ul>
                 </nav>
                 <main className={'min-h-[700px] w-full relative'}>
-                    <FullyLoadedImage src={Hero} alt={'img:Hero'} priority={true} />
+                    <FullyLoadedImage src={Hero} alt={'img:Hero'} priority={true}/>
+                    <div className="absolute top-1/2 flex items-center flex-col container left-1/2 text-center" style={{transform: 'translate(-50%, -50%)'}}>
+                        <h1 className='gradient-text'>It’s more than just a trip</h1>
+                    </div>
+
                 </main>
             </header>
         </div>
