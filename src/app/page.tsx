@@ -4,6 +4,7 @@ import Button from "@/app/shared/components/UI/Button";
 import Hero from '../../public/Hero.png'
 import FullyLoadedImage from "@/app/shared/components/FullyLoadedImage";
 import Input from "@/app/shared/components/UI/Input";
+import Select from "@/app/shared/components/UI/Select";
 
 export default function Home() {
     return (
@@ -51,13 +52,14 @@ export default function Home() {
                 </nav>
                 <main className={'min-h-[700px] w-full relative'}>
                     <FullyLoadedImage src={Hero} alt={'img:Hero'} priority={true}/>
-                    <div className="absolute top-1/2 flex items-center gap-[64px] flex-col container left-1/2 text-center" style={{transform: 'translate(-50%, -50%)'}}>
+                    <div
+                        className="absolute top-1/2 flex items-center gap-[64px] flex-col container left-1/2 text-center"
+                        style={{transform: 'translate(-50%, -50%)'}}>
                         <h1 className='gradient-text'>It’s more than just a trip</h1>
                         <div className='w-[1200px] bg-white border-[1px] border-gray-400 rounded-[4px] h-[48px]'>
-                            <Input isBorder={false}/>
+                            <Select inputWidth={220} inputPlaceholder={'From where?'}/>
                         </div>
                     </div>
-
                 </main>
             </header>
         </div>
