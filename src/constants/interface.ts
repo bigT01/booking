@@ -1,0 +1,3 @@
+interface IIconProps{
+    size?: number
+}
