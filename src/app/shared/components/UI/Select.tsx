@@ -19,6 +19,12 @@ const Select = ({inputWidth=148, inputPlaceholder='Placeholder', onOpened, child
         }
     }, [isOpened]);
 
+    useEffect(() => {
+        if(selectedOption){
+            setIsOpened(false)
+        }
+    }, [selectedOption]);
+
     return (
         <div className='relative w-fit'>
             <Input isBorder={false} readOnly={true} value={selectedOption} inputWidth={inputWidth} inputPlaceholder={inputPlaceholder} onClick={() => setIsOpened(old => !old)}/>

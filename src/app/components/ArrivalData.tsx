@@ -21,7 +21,6 @@ const ArrivalData = ({onSelectedOption}: ArrivalDataProps) => {
         const fetchAirportsData = async () => {
             const data = await import('../../constants/airportsByCountry.json');
             setData(data.default);
-            console.log(data.default)
         };
         fetchAirportsData();
     }, []);
