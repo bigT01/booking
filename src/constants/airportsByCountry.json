@@ -1,0 +1,94 @@
+[
+  {
+    "country": "United States",
+    "code": "US",
+    "airports": [
+      {"name": "John F. Kennedy International Airport", "code": "JFK"},
+      {"name": "Los Angeles International Airport", "code": "LAX"},
+      {"name": "San Francisco International Airport", "code": "SFO"}
+    ]
+  },
+  {
+    "country": "United Kingdom",
+    "code": "GB",
+    "airports": [
+      {"name": "Heathrow Airport", "code": "LHR"},
+      {"name": "Gatwick Airport", "code": "LGW"},
+      {"name": "Manchester Airport", "code": "MAN"}
+    ]
+  },
+  {
+    "country": "France",
+    "code": "FR",
+    "airports": [
+      {"name": "Charles de Gaulle Airport", "code": "CDG"},
+      {"name": "Orly Airport", "code": "ORY"}
+    ]
+  },
+  {
+    "country": "Germany",
+    "code": "DE",
+    "airports": [
+      {"name": "Frankfurt Airport", "code": "FRA"},
+      {"name": "Munich Airport", "code": "MUC"}
+    ]
+  },
+  {
+    "country": "Japan",
+    "code": "JP",
+    "airports": [
+      {"name": "Narita International Airport", "code": "NRT"},
+      {"name": "Haneda Airport", "code": "HND"}
+    ]
+  },
+  {
+    "country": "Canada",
+    "code": "CA",
+    "airports": [
+      {"name": "Toronto Pearson International Airport", "code": "YYZ"},
+      {"name": "Vancouver International Airport", "code": "YVR"}
+    ]
+  },
+  {
+    "country": "Australia",
+    "code": "AU",
+    "airports": [
+      {"name": "Sydney Kingsford Smith International Airport", "code": "SYD"},
+      {"name": "Melbourne Airport", "code": "MEL"}
+    ]
+  },
+  {
+    "country": "Russia",
+    "code": "RU",
+    "airports": [
+      {"name": "Sheremetyevo International Airport", "code": "SVO"},
+      {"name": "Domodedovo International Airport", "code": "DME"}
+    ]
+  },
+  {
+    "country": "China",
+    "code": "CN",
+    "airports": [
+      {"name": "Beijing Capital International Airport", "code": "PEK"},
+      {"name": "Shanghai Pudong International Airport", "code": "PVG"}
+    ]
+  },
+  {
+    "country": "Brazil",
+    "code": "BR",
+    "airports": [
+      {"name": "São Paulo–Guarulhos International Airport", "code": "GRU"},
+      {"name": "Rio de Janeiro–Galeão International Airport", "code": "GIG"}
+    ]
+  },
+  {
+    "country": "Kazakhstan",
+    "code": "KZ",
+    "airports": [
+      {"name": "Almaty International Airport", "code": "ALA"},
+      {"name": "Nursultan Nazarbayev International Airport", "code": "NQZ"},
+      {"name": "Aktau International Airport", "code": "SCO"},
+      {"name": "Shymkent International Airport", "code": "CIT"}
+    ]
+  }
+]
