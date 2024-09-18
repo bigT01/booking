@@ -31,8 +31,9 @@
  * - The use of `useEffect` to notify about dropdown opening state and to manage when the dropdown should close based on selection ensures it operates smoothly without unnecessary renders.
  */
 'use client'
-import React, {ReactNode, useEffect, useState} from 'react';
+import React, {ReactNode, useEffect, useRef, useState} from 'react';
 import Input from "@/app/shared/components/UI/Input";
+import {useClickOutside} from "@/utils/hooks/useClickOutside";
 
 type SelectProps = {
     inputWidth?: number
@@ -43,6 +44,7 @@ type SelectProps = {
 }
 
 const Select = ({inputWidth=148, inputPlaceholder='Placeholder', onOpened, children, selectedOption}: SelectProps) => {
+    const ref = useRef<HTMLDivElement | null>(null)
     const [isOpened, setIsOpened] = useState(false)
 
     useEffect(() => {
@@ -57,11 +59,13 @@ const Select = ({inputWidth=148, inputPlaceholder='Placeholder', onOpened, child
         }
     }, [selectedOption]);
 
+    useClickOutside(ref, () => {setIsOpened(false)})
+
     return (
-        <div className='relative w-fit'>
-            <Input isBorder={false} readOnly={true} value={selectedOption} inputWidth={inputWidth} inputPlaceholder={inputPlaceholder} onClick={() => setIsOpened(old => !old)}/>
+        <div className='relative w-fit' ref={ref}>
+            <Input isBorder={false} readOnly={true} value={selectedOption} inputWidth={inputWidth} onCl inputPlaceholder={inputPlaceholder} onClick={() => setIsOpened(old => !old)}/>
             {isOpened ? (
-                <ul className='absolute max-h-[312px] overflow-scroll top-full bg-white rounded-lg p-4 w-[95%] left-[5%]' style={{boxShadow: '0 2px 4px #07049210'}}>
+                <ul className='absolute max-h-[312px] overflow-scroll top-[105%] bg-white rounded-lg p-4 w-[95%] left-[5%]' style={{boxShadow: '0 2px 4px #07049210'}}>
                     {children}
                 </ul>
             ) : null}
