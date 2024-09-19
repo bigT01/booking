@@ -1,4 +1,5 @@
 import React from 'react';
+import {IIconProps} from "@/constants/interface";
 
 export const Departure = ({size=32}: IIconProps) => {
     return (

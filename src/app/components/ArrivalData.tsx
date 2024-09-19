@@ -29,9 +29,10 @@
 import React, {useEffect, useState} from 'react';
 import ListItem from "@/app/shared/components/UI/ListItem";
 import {useSelectLogic} from "@/utils/hooks/useSelectLogic";
+import {AirportsByCountry, option} from "@/constants/interface";
 
 type ArrivalDataProps = {
-    onSelectedOption?: (option: option | null) => void
+    onSelectedOption: (option: option) => void
 }
 
 const ArrivalData = ({onSelectedOption}: ArrivalDataProps) => {

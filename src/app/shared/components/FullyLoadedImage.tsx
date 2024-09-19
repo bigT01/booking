@@ -1,6 +1,6 @@
 "use client";
 import React, {useState} from 'react';
-import Image, {ImageProps, StaticImageData} from "next/image";
+import Image, {StaticImageData} from "next/image";
 import {StaticRequire} from "next/dist/shared/lib/get-img-props";
 
 /**

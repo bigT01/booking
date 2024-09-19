@@ -1,4 +1,5 @@
 import React from 'react';
+import {IIconProps} from "@/constants/interface";
 
 export const ArrowRight = ({size=18}:IIconProps) => {
     return (

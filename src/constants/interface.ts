@@ -1,8 +1,8 @@
-interface IIconProps{
+export interface IIconProps{
     size?: number
 }
 
-interface option{
+export interface option{
     id: string,
     label: string,
 }
@@ -12,7 +12,7 @@ interface AirportsCodeAndName {
     code: string
 }
 
-interface AirportsByCountry {
+export interface AirportsByCountry {
     country: string,
     code: string,
     airports: AirportsCodeAndName[],
