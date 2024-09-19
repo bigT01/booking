@@ -36,7 +36,7 @@ type ArrivalDataProps = {
 
 const ArrivalData = ({onSelectedOption}: ArrivalDataProps) => {
     const {selectedOption,handleSelect} = useSelectLogic();
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<AirportsByCountry[]>([]);
 
     useEffect(() => {
         if(onSelectedOption){
@@ -46,8 +46,8 @@ const ArrivalData = ({onSelectedOption}: ArrivalDataProps) => {
 
     useEffect(() => {
         const fetchAirportsData = async () => {
-            const data = await import('../../constants/airportsByCountry.json');
-            setData(data.default);
+            const data: AirportsByCountry[] = await import('../../constants/airportsByCountry.json');
+            setData(data);
         };
         fetchAirportsData();
     }, []);
