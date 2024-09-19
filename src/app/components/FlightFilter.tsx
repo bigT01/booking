@@ -11,7 +11,7 @@ const FlightFilter = () => {
     return (
         <div className='w-[1200px] bg-white border-[1px] flex border-gray-400 rounded-[4px] h-[48px]'>
             <Select inputWidth={220} inputPlaceholder={'From where?'} onOpened={e => setIsOpen(e)} selectedOption={labelArrival}>
-                {isOpen ? <DynamicComponent onSelectedOption={(e) => setLabelArrival(e?.label || '')}/> : null}
+                {isOpen ? <DynamicComponent onSelectedOption={(e) => setLabelArrival(e)} activeLabel={labelArrival}/> : null}
             </Select>
             <div className='h-full border-gray-200 border-[0.5px]'></div>
             {/*<Select inputWidth={220} inputPlaceholder={'Where to?'} onOpened={e => setIsOpen(e)} selectedOption={labelArrival}>*/}
