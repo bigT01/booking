@@ -49,7 +49,7 @@ export default function Home() {
                     </ul>
                 </nav>
                 <main className={'min-h-[700px] w-full relative'}>
-                    <FullyLoadedImage src={'/Hero.png'} alt={'img:Hero'}/>
+                    <FullyLoadedImage src={'/Hero.png'} alt={'img:Hero'} fill={true}/>
                     <div
                         className="absolute top-1/2 flex items-center gap-[64px] flex-col container left-1/2 text-center"
                         style={{transform: 'translate(-50%, -50%)'}}>

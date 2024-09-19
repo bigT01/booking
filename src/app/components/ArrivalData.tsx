@@ -47,8 +47,8 @@ const ArrivalData = ({onSelectedOption}: ArrivalDataProps) => {
 
     useEffect(() => {
         const fetchAirportsData = async () => {
-            const data: AirportsByCountry[] = await import('../../constants/airportsByCountry.json');
-            setData(data);
+            const data: {default: AirportsByCountry[] } = await import('../../constants/airportsByCountry.json');
+            setData(data.default);
         };
         fetchAirportsData();
     }, []);
