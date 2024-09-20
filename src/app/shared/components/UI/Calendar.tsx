@@ -4,6 +4,7 @@ import Input from "@/app/shared/components/UI/Input";
 import {CalendarWD} from "@/app/icons/Basic";
 import RadioListButton from "@/app/shared/components/UI/RadioListButton";
 import {LabelForm} from "@/constants/interface";
+import {useClickOutside} from "@/utils/hooks/useClickOutside";
 
 const radioItemsArray: LabelForm[] = [
     {id: '123', label:'Round trip'},
@@ -15,6 +16,7 @@ const Calendar = () => {
     const [isOpenedDropDown, setIsOpenedDropDown] = useState<boolean>(false)
     const [activeRadio, setActiveRadio] = useState<LabelForm>(radioItemsArray[0])
 
+    useClickOutside(ref, () => {setIsOpenedDropDown(false)})
     return (
         <div className='relative w-fit' ref={ref}>
             <Input Icon={<CalendarWD/>} isRelative={true} isBorder={false} readOnly={true} value={''} inputWidth={148} inputPlaceholder={'Depart - Return'} onClick={() => setIsOpenedDropDown(old => !old)}/>
