@@ -1,12 +1,17 @@
-import React, {AllHTMLAttributes, useState} from 'react';
+import React, {AllHTMLAttributes, useEffect, useState} from 'react';
 import {LabelForm} from "@/constants/interface";
 
 type RadioListButtonProps = {
     RadioItems: LabelForm[],
+    onSelectedRadio?: (RadioItem: LabelForm) => void
 }& AllHTMLAttributes<HTMLDivElement>
 
-const RadioListButton = ({RadioItems, ...props}:RadioListButtonProps) => {
+const RadioListButton = ({RadioItems, onSelectedRadio, ...props}:RadioListButtonProps) => {
     const [activeRadio, setActiveRadio] = useState<LabelForm>(RadioItems[0])
+
+    useEffect(() => {
+        onSelectedRadio && onSelectedRadio(activeRadio)
+    }, [activeRadio])
     return (
         <div  {...props}>
             {RadioItems.map(radio => (
