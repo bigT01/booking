@@ -8,9 +8,9 @@ type ArrivalDataProps = {
     activeLabel: string
 }
 
-const ArrivalData = ({onSelectedOption, activeLabel}: ArrivalDataProps) => {
+const ListOfAirportsData = ({onSelectedOption, activeLabel}: ArrivalDataProps) => {
     const [selectedOption, setSelectedOption] = useState<string>(activeLabel);
-    const [data, setData] = useState<AirportsByCountry[]>([]);
+    const [AirportsData, setAirportsData] = useState<AirportsByCountry[]>([]);
 
     useEffect(() => {
         if (onSelectedOption) {
@@ -19,18 +19,17 @@ const ArrivalData = ({onSelectedOption, activeLabel}: ArrivalDataProps) => {
     }, [selectedOption]);
 
     useEffect(() => {
-        console.log(activeLabel)
         const fetchAirportsData = async () => {
             const data: { default: AirportsByCountry[] } = await import('../../constants/airportsByCountry.json');
-            setData(data.default);
+            setAirportsData(data.default);
         };
         fetchAirportsData();
     }, []);
 
     return (
         <>
-            {data
-                ? data.map(airports => airports.airports.map(airport => (
+            {AirportsData
+                ? AirportsData.map(airports => airports.airports.map(airport => (
                     <ListItem key={airport.code} label={airport.code} handleSelect={setSelectedOption}
                               state={activeLabel === airport.code ? "Selected" : "Default"}
                               selectedOption={selectedOption}/>)))
@@ -40,4 +39,4 @@ const ArrivalData = ({onSelectedOption, activeLabel}: ArrivalDataProps) => {
     );
 };
 
-export default ArrivalData;
+export default ListOfAirportsData;
