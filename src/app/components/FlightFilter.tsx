@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Select from "@/app/shared/components/UI/Select";
 import dynamic from "next/dynamic";
 import {Arrival, Departure} from "@/app/icons/Basic";
+import Calendar from "@/app/shared/components/UI/Calendar";
 
 const DynamicComponent = dynamic(() => import('./ListOfAirportsData'))
 const FlightFilter = () => {
@@ -24,6 +25,7 @@ const FlightFilter = () => {
                 {isOpenDepartureData ? <DynamicComponent onSelectedOption={(e) => setLabelDeparture(e)} activeLabel={labelDeparture}/> : null}
             </Select>
             <div className='h-full border-gray-200 border-[0.5px]'></div>
+            <Calendar/>
         </div>
     );
 };

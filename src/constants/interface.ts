@@ -2,7 +2,7 @@ export interface IIconProps{
     size?: number
 }
 
-export interface option{
+export interface LabelForm{
     id: string,
     label: string,
 }
