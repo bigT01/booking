@@ -1,7 +1,6 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import {convertedDateToMonthAndYears, getCalendarArray} from "@/utils/ConvertedDate";
-import {element} from "prop-types";
 
 const Calendar = () => {
     const [mainDates, setMainDates] = useState<{month: string, year: number} | null>(null)
@@ -34,7 +33,7 @@ const Calendar = () => {
                         calendarArray.map((week, index) => (
                             <tr key={index}>
                                 {week.map(day => (
-                                    <td key={day} className={'w-[32px] h-[32px]'}>{day}</td>
+                                    <td key={day.day} className={`w-[32px] h-[32px] ${!day.isThisMonth ? 'text-gray-400' : 'cursor-pointer'}`}>{day.day}</td>
                                 ))}
                             </tr>
                         ))

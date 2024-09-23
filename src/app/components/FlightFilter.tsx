@@ -14,18 +14,22 @@ const FlightFilter = () => {
 
     return (
         <div className='w-[1200px] bg-white border-[1px] flex border-gray-400 rounded-[4px] h-[48px]'>
-            <Select Icon={<Arrival/>} inputWidth={220} inputPlaceholder={'From where?'} onOpened={e => setIsOpenArrivalData(e)}
+            <Select Icon={<Arrival/>} inputWidth={220} inputPlaceholder={'From where?'}
+                    onOpened={e => setIsOpenArrivalData(e)}
                     selectedOption={labelArrival}>
                 {isOpenArrivalData ?
                     <DynamicComponent onSelectedOption={(e) => setLabelArrival(e)} activeLabel={labelArrival}/> : null}
             </Select>
             <div className='h-full border-gray-200 border-[0.5px]'></div>
-            <Select Icon={<Departure/>} inputWidth={220} inputPlaceholder={'Where to?'} onOpened={e => setIsOpenDepartureData(e)}
+            <Select Icon={<Departure/>} inputWidth={220} inputPlaceholder={'Where to?'}
+                    onOpened={e => setIsOpenDepartureData(e)}
                     selectedOption={labelDeparture}>
-                {isOpenDepartureData ? <DynamicComponent onSelectedOption={(e) => setLabelDeparture(e)} activeLabel={labelDeparture}/> : null}
+                {isOpenDepartureData ? <DynamicComponent onSelectedOption={(e) => setLabelDeparture(e)}
+                                                         activeLabel={labelDeparture}/> : null}
             </Select>
             <div className='h-full border-gray-200 border-[0.5px]'></div>
             <CalendarComponent/>
+            <div className='h-full border-gray-200 border-[0.5px]'></div>
         </div>
     );
 };
