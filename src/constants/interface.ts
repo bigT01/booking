@@ -17,3 +17,8 @@ export interface AirportsByCountry {
     code: string,
     airports: AirportsCodeAndName[],
 }
+
+export interface CalendarDayFormat {
+    day: number,
+    isThisMonth: boolean
+}

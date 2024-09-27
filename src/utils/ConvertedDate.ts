@@ -1,3 +1,5 @@
+import {CalendarDayFormat} from "@/constants/interface";
+
 const listOfMonth = [
     'January',
     'February',
@@ -12,10 +14,12 @@ const listOfMonth = [
     'November',
     'December'
 ];
-export function convertedDateToMonthAndYears(): {year: number, month: string }{
+//TODO indexFromCurrentMonth should be restarted after reaching December and change the year to next or previous if it
+// is January
+export function convertedDateToMonthAndYears(indexFromCurrentMonth: number): {year: number, month: string }{
     const dateNow = new Date();
     const year = dateNow.getFullYear();
-    const month = listOfMonth[dateNow.getMonth()];
+    const month = listOfMonth[dateNow.getMonth() + indexFromCurrentMonth];
 
     return {year, month};
 }
@@ -35,7 +39,7 @@ export function getCalendarArray(year:number, month:string):{day: number, isThis
     const firstDay = getFirstDayOfMonth(year, month); // На какой день недели начинается месяц
     const weeks: {day: number, isThisMonth: boolean}[][] = []; // Массив для недель
 
-    let week: {day: number, isThisMonth: boolean}[] = []; // Текущая неделя
+    let week: CalendarDayFormat[] = []; // Текущая неделя
     let dayCounter = 1; // Счётчик дней текущего месяца
 
     // Добавляем дни предыдущего месяца в первую неделю
