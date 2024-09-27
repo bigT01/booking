@@ -22,3 +22,14 @@ export interface CalendarDayFormat {
     day: number,
     isThisMonth: boolean
 }
+
+export interface selectedDateFormat {
+    year: number,
+    day: number,
+    month: string
+}
+
+export interface yearAndMonthFormat {
+    month: string,
+    year: number
+}

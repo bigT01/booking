@@ -14,7 +14,8 @@ const listOfMonth = [
     'November',
     'December'
 ];
-
+//TODO indexFromCurrentMonth should be restarted after reaching December and change the year to next or previous if it
+// is January
 export function convertedDateToMonthAndYears(indexFromCurrentMonth: number): {year: number, month: string }{
     const dateNow = new Date();
     const year = dateNow.getFullYear();

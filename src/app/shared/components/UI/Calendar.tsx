@@ -1,20 +1,19 @@
 "use client"
 import React, {useEffect, useState} from 'react';
 import {convertedDateToMonthAndYears, getCalendarArray} from "@/utils/ConvertedDate";
-import {CalendarDayFormat} from "@/constants/interface";
+import {CalendarDayFormat, selectedDateFormat, yearAndMonthFormat} from "@/constants/interface";
+import {toggleSelectedDate} from "@/app/utils/toggleSelectedDate";
+import {checkingTheActiveDay} from "@/app/utils/checkingTheActiveDay";
+import CalendarLayout from "@/app/shared/components/UI/CalendarLayout";
 
-type selectedDate = {
-    year: number,
-    day: number,
-    month: string
-}
+
 
 const Calendar = () => {
-    const [firstYearAndMonth, setFirstYearAndMonth] = useState<{ month: string, year: number } | null>(null)
+    const [firstYearAndMonth, setFirstYearAndMonth] = useState<yearAndMonthFormat | null>(null)
     const [indexFromCurrentMonth, setIndexFromCurrentMonth] = useState<number>(0)
     const [calendarArray, setCalendarArray] = useState([])
 
-    const [firstSelectedDate, setFirstSelectedDate] = useState<selectedDate | null>(null)
+    const [firstSelectedDate, setFirstSelectedDate] = useState<selectedDateFormat | null>(null)
 
     useEffect(() => {
         setFirstYearAndMonth(convertedDateToMonthAndYears(indexFromCurrentMonth))
@@ -28,34 +27,16 @@ const Calendar = () => {
 
     const handleFirstDaySelect = (day: number) => {
         if (firstYearAndMonth?.year && firstYearAndMonth.month) {
-            setFirstSelectedDate({day: day, year: firstYearAndMonth.year, month: firstYearAndMonth.month})
+            const newDate = {day: day, year: firstYearAndMonth.year, month: firstYearAndMonth.month}
+            setFirstSelectedDate(toggleSelectedDate( firstSelectedDate, newDate))
         }
     }
 
-    const checkingTheActiveDay = (day:CalendarDayFormat): boolean => {
-        if(firstSelectedDate?.day === day.day &&
-            day.isThisMonth &&
-            firstSelectedDate?.month === firstYearAndMonth?.month &&
-            firstSelectedDate?.year === firstYearAndMonth?.year){
-            return true
-        } else {
-            return false
-        }
-    }
     return (
         <div>
             <div className={'p-4'}>
                 <h5>{firstYearAndMonth?.month} {firstYearAndMonth?.year}</h5>
-                <table>
-                    <tr>
-                        <th>S</th>
-                        <th>M</th>
-                        <th>T</th>
-                        <th>W</th>
-                        <th>T</th>
-                        <th>F</th>
-                        <th>S</th>
-                    </tr>
+                <CalendarLayout>
                     {
                         calendarArray.map((week, index) => (
                             <tr key={index}>
@@ -63,7 +44,7 @@ const Calendar = () => {
                                     <td key={day.day}
                                         className={`w-[32px] h-[32px] rounded-full
                                         ${!day.isThisMonth ? 'text-gray-400' : 'cursor-pointer'} 
-                                        ${checkingTheActiveDay(day) ? 'bg-purple-blue text-white' : 'bg-transparent'}`}
+                                        ${checkingTheActiveDay(day, firstSelectedDate) ? 'bg-purple-blue text-white transition-colors' : 'bg-transparent transition-colors'}`}
                                         onClick={() => handleFirstDaySelect(day.day)}>
                                         {day.day}
                                     </td>
@@ -71,7 +52,7 @@ const Calendar = () => {
                             </tr>
                         ))
                     }
-                </table>
+                </CalendarLayout>
             </div>
         </div>
     );
