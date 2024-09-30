@@ -7,7 +7,6 @@ import {checkingTheActiveDay} from "@/app/utils/checkingTheActiveDay";
 import CalendarLayout from "@/app/shared/components/UI/CalendarLayout";
 
 
-
 const RoundTripCalendar = () => {
     const [firstYearAndMonth, setFirstYearAndMonth] = useState<yearAndMonthFormat | null>(null)
     const [indexFromCurrentMonth, setIndexFromCurrentMonth] = useState<number>(0)
@@ -29,33 +28,31 @@ const RoundTripCalendar = () => {
     const handleFirstDaySelect = (day: number) => {
         if (firstYearAndMonth?.year && firstYearAndMonth.month) {
             const newDate = {day: day, year: firstYearAndMonth.year, month: firstYearAndMonth.month}
-            setFirstSelectedDate(toggleSelectedDate( firstSelectedDate, newDate))
+            setFirstSelectedDate(toggleSelectedDate(firstSelectedDate, newDate))
         }
     }
 
     return (
-        <div>
-            <div className={'p-4'}>
-                <h5>{firstYearAndMonth?.month} {firstYearAndMonth?.year}</h5>
-                <CalendarLayout>
-                    {
-                        calendarArray.map((week, index) => (
-                            <tr key={index}>
-                                {week.map((day: CalendarDayFormat) => (
-                                    <td key={day.day}
-                                        className={`w-[32px] h-[32px] rounded-full
+        <div className={'p-4 w-fit'}>
+            <h5 className='mb-2 text-left'>{firstYearAndMonth?.month} {firstYearAndMonth?.year}</h5>
+            <CalendarLayout>
+                {
+                    calendarArray.map((week, index) => (
+                        <tr key={index}>
+                            {week.map((day: CalendarDayFormat) => (
+                                <td key={day.day}
+                                    className={`w-[32px] h-[32px] rounded-full
                                         ${!day.isThisMonth ? 'text-gray-400' : 'cursor-pointer'} 
-                                        ${checkingTheActiveDay(day, firstSelectedDate) ? 'bg-purple-blue text-white transition-colors' 
-                                            : 'bg-transparent transition-colors'}`}
-                                        onClick={() => day.isThisMonth? handleFirstDaySelect(day.day) : null}>
-                                        {day.day}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))
-                    }
-                </CalendarLayout>
-            </div>
+                                        ${checkingTheActiveDay(day, firstSelectedDate) ? 'bg-purple-blue text-white transition-colors'
+                                        : 'bg-transparent transition-colors'}`}
+                                    onClick={() => day.isThisMonth ? handleFirstDaySelect(day.day) : null}>
+                                    {day.day}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                }
+            </CalendarLayout>
         </div>
     );
 };
