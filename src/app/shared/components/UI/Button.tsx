@@ -10,7 +10,6 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({btnType, size, icon, state = 'default', children, ...rest}: ButtonProps) => {
-    // Hash table for button sizes
     const sizeStyles: { [key: string]: string } = {
         lg: "py-3 px-5 text-lg",
         md: "py-3 px-5 text-base",
@@ -18,7 +17,6 @@ const Button = ({btnType, size, icon, state = 'default', children, ...rest}: But
         xs: "py-[10px] px-4 text-base"
     };
 
-    // Hash table for styles with nested states
     const typeStyles: {
         [key: string]: {
             [key: string]: string

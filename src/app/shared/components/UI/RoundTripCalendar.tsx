@@ -8,12 +8,13 @@ import CalendarLayout from "@/app/shared/components/UI/CalendarLayout";
 
 
 
-const Calendar = () => {
+const RoundTripCalendar = () => {
     const [firstYearAndMonth, setFirstYearAndMonth] = useState<yearAndMonthFormat | null>(null)
     const [indexFromCurrentMonth, setIndexFromCurrentMonth] = useState<number>(0)
+    const [firstSelectedDate, setFirstSelectedDate] = useState<selectedDateFormat | null>(null)
+
     const [calendarArray, setCalendarArray] = useState([])
 
-    const [firstSelectedDate, setFirstSelectedDate] = useState<selectedDateFormat | null>(null)
 
     useEffect(() => {
         setFirstYearAndMonth(convertedDateToMonthAndYears(indexFromCurrentMonth))
@@ -44,8 +45,9 @@ const Calendar = () => {
                                     <td key={day.day}
                                         className={`w-[32px] h-[32px] rounded-full
                                         ${!day.isThisMonth ? 'text-gray-400' : 'cursor-pointer'} 
-                                        ${checkingTheActiveDay(day, firstSelectedDate) ? 'bg-purple-blue text-white transition-colors' : 'bg-transparent transition-colors'}`}
-                                        onClick={() => handleFirstDaySelect(day.day)}>
+                                        ${checkingTheActiveDay(day, firstSelectedDate) ? 'bg-purple-blue text-white transition-colors' 
+                                            : 'bg-transparent transition-colors'}`}
+                                        onClick={() => day.isThisMonth? handleFirstDaySelect(day.day) : null}>
                                         {day.day}
                                     </td>
                                 ))}
@@ -58,4 +60,4 @@ const Calendar = () => {
     );
 };
 
-export default Calendar;
+export default RoundTripCalendar;

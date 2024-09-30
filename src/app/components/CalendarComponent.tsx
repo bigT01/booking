@@ -5,7 +5,7 @@ import {CalendarWD} from "@/app/icons/Basic";
 import RadioListButton from "@/app/shared/components/UI/RadioListButton";
 import {LabelForm} from "@/constants/interface";
 import {useClickOutside} from "@/utils/hooks/useClickOutside";
-import Calendar from "@/app/shared/components/UI/Calendar";
+import RoundTripCalendar from "@/app/shared/components/UI/RoundTripCalendar";
 
 const radioItemsArray: LabelForm[] = [
     {id: '123', label:'Round trip'},
@@ -26,7 +26,7 @@ const CalendarComponent = () => {
                     <RadioListButton className='flex gap-4 text-gray-600 mt-[29px] py-1 ml-[29px] mb-[29px]'
                                      RadioItems={radioItemsArray} onSelectedRadio={(e) => setActiveRadio(e)}/>
                     <div className='w-full border-gray-200 border-[0.5px]'></div>
-                    <Calendar/>
+                    <RoundTripCalendar/>
                 </div>
             )}
         </div>
