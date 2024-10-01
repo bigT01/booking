@@ -14,19 +14,35 @@ const listOfMonth = [
     'November',
     'December'
 ];
-//TODO indexFromCurrentMonth should be restarted after reaching December and change the year to next or previous if it
-// is January
-export function convertedDateToMonthAndYears(indexFromCurrentMonth: number): {year: number, month: string }{
+
+export function getCurrentMonthAndYear(): {year: number, month: string }{
     const dateNow = new Date();
     const year = dateNow.getFullYear();
-    const month = listOfMonth[dateNow.getMonth() + indexFromCurrentMonth];
+    const month = listOfMonth[dateNow.getMonth()];
 
     return {year, month};
 }
 
-function getFirstDayOfMonth(year:number, month:string) {
-    const date = new Date(year, listOfMonth.indexOf(month), 1); // Первый день текущего месяца
-    return date.getDay(); // Возвращает день недели (0 - Воскресенье, 1 - Понедельник и т.д.)
+export function convertedDateToMonthAndYears(indexFromCurrentMonth: number): {year: number, month: string }{
+    const {year, month} = getCurrentMonthAndYear()
+    const fullMonth = listOfMonth.indexOf(month) + indexFromCurrentMonth
+    let monthValue: number = 0;
+    let yearsShouldBeAdded: number = 0;
+
+    if (fullMonth < 0) {
+        monthValue = (fullMonth % 12 + 12) % 12;
+        yearsShouldBeAdded = Math.floor((fullMonth - monthValue) / 12);
+    } else {
+        monthValue = fullMonth % 12;
+        yearsShouldBeAdded = Math.floor(fullMonth / 12);
+    }
+
+    return {year: year+yearsShouldBeAdded, month:listOfMonth[monthValue]};
+}
+
+function getFirstDayOfMonth(year:number, month:string): number {
+    const firstDateOfMonth = new Date(year, listOfMonth.indexOf(month), 1);
+    return firstDateOfMonth.getDay();
 }
 
 function getDaysInMonth(year:number, month:string) {
