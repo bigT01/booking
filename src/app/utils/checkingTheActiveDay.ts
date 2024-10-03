@@ -1,8 +1,10 @@
-import {CalendarDayFormat, selectedDateFormat} from "@/constants/interface";
+import {CalendarDayFormat, selectedDateFormat, yearAndMonthFormat} from "@/constants/interface";
 
-export const checkingTheActiveDay = (calendarDay:CalendarDayFormat, selectedDate: selectedDateFormat | null): boolean => {
+type fullDays = CalendarDayFormat & yearAndMonthFormat
+
+export const checkingTheActiveDay = (calendarDay:fullDays, selectedDate: selectedDateFormat | null): boolean => {
     return selectedDate?.day === calendarDay.day &&
         calendarDay.isThisMonth &&
-        selectedDate?.month === selectedDate?.month &&
-        selectedDate?.year === selectedDate?.year;
+        calendarDay?.month === selectedDate?.month &&
+        calendarDay?.year === selectedDate?.year;
 }
