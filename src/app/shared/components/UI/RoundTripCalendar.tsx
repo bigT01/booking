@@ -6,13 +6,14 @@ import {toggleSelectedDate} from "@/app/utils/toggleSelectedDate";
 import {checkingTheActiveDay} from "@/app/utils/checkingTheActiveDay";
 import CalendarLayout from "@/app/shared/components/UI/CalendarLayout";
 import {ArrowLeftLite} from "@/app/icons";
+import CalendarDay from "@/app/shared/components/UI/CalendarDay";
 
 
 const RoundTripCalendar = () => {
     const [firstYearAndMonth, setFirstYearAndMonth] = useState<yearAndMonthFormat | null>(null)
     const [secondYearAndMonth, setSecondYearAndMonth] = useState<yearAndMonthFormat | null>(null)
 
-    const [indexFromCurrentMonth, setIndexFromCurrentMonth] = useState<number>(2)
+    const [indexFromCurrentMonth, setIndexFromCurrentMonth] = useState<number>(0)
 
     const [firstSelectedDate, setFirstSelectedDate] = useState<selectedDateFormat | null>(null)
     const [secondSelectedDate, setSecondSelectedDate] = useState<selectedDateFormat | null>(null)
@@ -59,14 +60,11 @@ const RoundTripCalendar = () => {
                         firstCalendarDays.map((week, index) => (
                             <tr key={index}>
                                 {week.map((day: CalendarDayFormat) => (
-                                    <td key={day.day}
-                                        className={`w-[32px] h-[32px] rounded-full
-                                        ${!day.isThisMonth ? 'text-gray-400' : 'cursor-pointer'} 
-                                        ${firstYearAndMonth ? checkingTheActiveDay(Object.assign(day, firstYearAndMonth) , firstSelectedDate) ? 'bg-purple-blue text-white transition-colors'
-                                            : 'bg-transparent transition-colors': 'bg-transparent transition-colors'}`}
-                                        onClick={() => day.isThisMonth ? handleFirstDaySelect(day.day) : null}>
-                                        {day.day}
-                                    </td>
+                                    <CalendarDay key={day.day}
+                                                 isActive={firstYearAndMonth ? checkingTheActiveDay(Object.assign(day, firstYearAndMonth) , firstSelectedDate) : false}
+                                                 day={day.day}
+                                                 isThisMonth={day.isThisMonth}
+                                                 handler={() => handleFirstDaySelect(day.day)}/>
                                 ))}
                             </tr>
                         ))
@@ -80,14 +78,11 @@ const RoundTripCalendar = () => {
                         secondCalendarDays.map((week, index) => (
                             <tr key={index}>
                                 {week.map((day: CalendarDayFormat) => (
-                                    <td key={day.day}
-                                        className={`w-[32px] h-[32px] rounded-full
-                                        ${!day.isThisMonth ? 'text-gray-400' : 'cursor-pointer'} 
-                                         ${secondYearAndMonth ? checkingTheActiveDay(Object.assign(day, secondYearAndMonth) , secondSelectedDate) ? 'bg-purple-blue text-white transition-colors'
-                                            : 'bg-transparent transition-colors': 'bg-transparent transition-colors'}`}
-                                        onClick={() => day.isThisMonth ? handleSecondDaySelect(day.day) : null}>
-                                        {day.day}
-                                    </td>
+                                    <CalendarDay key={day.day}
+                                                 isActive={secondYearAndMonth ? checkingTheActiveDay(Object.assign(day, secondYearAndMonth), secondSelectedDate) : false}
+                                                 day={day.day}
+                                                 isThisMonth={day.isThisMonth}
+                                                 handler={() => handleSecondDaySelect(day.day)}/>
                                 ))}
                             </tr>
                         ))
