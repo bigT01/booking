@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, {FC} from 'react';
 
 type CalendarDayProps = {
     day: number,
@@ -8,7 +8,7 @@ type CalendarDayProps = {
     handler: (day: number) => void
 }
 
-const CalendarDay = ({day, handler, isActive, isThisMonth}: CalendarDayProps) => {
+const CalendarDay:FC = ({day, handler, isActive, isThisMonth}:CalendarDayProps) => {
     return (
         <td
             className={`w-[32px] h-[32px] rounded-full ${isThisMonth ? 'cursor-pointer' : 'text-gray-400'} 
@@ -17,6 +17,6 @@ const CalendarDay = ({day, handler, isActive, isThisMonth}: CalendarDayProps) =>
             {day}
         </td>
     );
-};
+}
 
 export default CalendarDay;
