@@ -64,11 +64,12 @@ export function getCalendarArray(year:number, month:string):{day: number, isThis
     }
 
     week = []
-    for(let i=1; i<=7; i++){
-        week.push({day:nextMonthDay++, isThisMonth: false})
+    if(weeks.length !== 6){
+        for(let i=1; i<=7; i++){
+            week.push({day:nextMonthDay++, isThisMonth: false})
+        }
+        weeks.push(week)
     }
-    weeks.push(week)
-
 
     return weeks;
 }
