@@ -1,13 +1,13 @@
 "use client"
 import React, {useCallback, useMemo, useState} from 'react';
 import {convertedDateToMonthAndYears, getCalendarArray} from "@/utils/ConvertedDate";
-import {selectedDateFormat} from "@/constants/interface";
+import {LabelForm, selectedDateFormat} from "@/constants/interface";
 import {toggleSelectedDate} from "@/app/utils/toggleSelectedDate";
 import {ArrowLeftLite} from "@/app/icons";
 import CalendarSection from "@/app/shared/components/UI/CalendarSection";
 
 
-const RoundTripCalendar = () => {
+const RoundTripCalendar = ({activeRadio}: LabelForm) => {
     const [indexFromCurrentMonth, setIndexFromCurrentMonth] = useState<number>(0);
     const [firstSelectedDate, setFirstSelectedDate] = useState<selectedDateFormat | null>(null);
     const [secondSelectedDate, setSecondSelectedDate] = useState<selectedDateFormat | null>(null);
@@ -33,7 +33,7 @@ const RoundTripCalendar = () => {
     }, [secondSelectedDate, secondYearAndMonth]);
 
     return (
-        <div className='flex px-[33px] pt-2 pb-4'>
+        <div className='flex px-[33px] pt-2 pb-4 justify-between'>
             <button onClick={() => setIndexFromCurrentMonth(old => old - 1)}>
                 <ArrowLeftLite/>
             </button>
@@ -43,12 +43,14 @@ const RoundTripCalendar = () => {
                 selectedDate={firstSelectedDate}
                 handleDaySelect={handleFirstDaySelect}
             />
-            <CalendarSection
-                yearAndMonth={secondYearAndMonth}
-                calendarDays={secondCalendarDays}
-                selectedDate={secondSelectedDate}
-                handleDaySelect={handleSecondDaySelect}
-            />
+            {activeRadio.id === '1' ? (
+                <CalendarSection
+                    yearAndMonth={secondYearAndMonth}
+                    calendarDays={secondCalendarDays}
+                    selectedDate={secondSelectedDate}
+                    handleDaySelect={handleSecondDaySelect}
+                />
+            ) : null}
             <button className={'rotate-180'} onClick={() => setIndexFromCurrentMonth(old => old + 1)}>
                 <ArrowLeftLite/>
             </button>

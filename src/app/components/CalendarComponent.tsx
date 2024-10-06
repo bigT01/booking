@@ -21,14 +21,13 @@ const CalendarComponent = () => {
     useClickOutside(ref, () => {setIsOpenedDropDown(false)})
     return (
         <div className='relative w-fit' ref={ref}>
-            <Input Icon={<CalendarWD/>} isRelative={true} isBorder={false} readOnly={true} value={''} inputWidth={148} inputPlaceholder={'Depart - Return'} onClick={() => setIsOpenedDropDown(old => !old)}/>
+            <Input Icon={<CalendarWD/>} isRelative={true} isBorder={false} readOnly={true} value={''} inputWidth={148} inputPlaceholder={activeRadio.id === '1' ? 'Depart - Return' : 'Depart'} onClick={() => setIsOpenedDropDown(old => !old)}/>
             {isOpenedDropDown && (
                 <div className="absolute -top-[20px] rounded-xl shadow-2xl w-[642px] -right-[24px] h-[395px] bg-white">
                     <RadioListButton className='flex gap-4 text-gray-600 mt-[29px] py-1 ml-[29px] mb-[29px]'
                                      RadioItems={radioItemsArray} onSelectedRadio={(e) => setActiveRadio(e)}/>
                     <div className='w-full border-gray-200 border-[0.5px]'></div>
-                    {activeRadio.id === '1' && <RoundTripCalendar/>}
-                    {activeRadio.id === '2' && <OneWayCalendar/>}
+                    <RoundTripCalendar activeRadio={activeRadio}/>
                 </div>
             )}
         </div>
